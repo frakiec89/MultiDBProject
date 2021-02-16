@@ -83,7 +83,7 @@ namespace MultiDBProject
         private User NewUserGenerator()
         {
 
-
+            //
             var generator = new Faker<User>("ru").RuleFor(x => x.Name, f => f.Name.LastName())
                 .RuleFor(x => x.GenderId, f => f.Random.Number(1, 2));
                 ;
