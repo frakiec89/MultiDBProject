@@ -30,7 +30,9 @@
         <StackPanel Grid.Row="0" Grid.Column="1"
                     Orientation="Horizontal"
                     >
-            <Button x:Name="btSql" Content="Добавить в sql"/>
+            <Button x:Name="btSql" Content="Добавить в sql" Margin="5"/>
+            <Button x:Name="btSqlClear" Content="Очистить" Margin="5"/>
+          
         </StackPanel>
 
         <StackPanel  Grid.Row="0" Grid.Column="3"
@@ -39,6 +41,7 @@
             <Button x:Name="btPg" Content="Добавить в pgsql"
                     Margin="2"
                     />
+            <Button x:Name="btPgSqlClear" Content="Очистить" Margin="5"/>
         </StackPanel>
 
         <Button Grid.Column="2" Grid.Row="1"
@@ -70,7 +73,6 @@
             <LineBreak/>
             </TextBlock>
         </Button>
-        
 
     </Grid>
 </Window>

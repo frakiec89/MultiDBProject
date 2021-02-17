@@ -29,6 +29,53 @@ namespace MultiDBProject
             btPg.Click += BtPg_Click;
             btSql.Click += BtSql_Click;
             btAddGender.Click += BtAddGender_Click;
+            btPgSqlClear.Click += BtPgSqlClear_Click;
+            btSqlClear.Click += BtSqlClear_Click;
+
+        }
+
+        private void BtSqlClCompread_Click(object sender, RoutedEventArgs e)
+        {
+            ApDBContext sqlContext = new MSSQLDBContext();
+
+
+
+
+            sqlContext.Users.Distinct();
+            sqlContext.SaveChanges();
+
+         
+            dgSql.ItemsSource = sqlContext.Users.ToList();
+        }
+
+    
+
+        private void BtSqlClear_Click(object sender, RoutedEventArgs e)
+        {
+            ApDBContext sqlContext = new MSSQLDBContext();
+            sqlContext.Users.RemoveRange(sqlContext.Users);
+            sqlContext.SaveChanges();
+            dgSql.ItemsSource = sqlContext.Users.ToList();
+        }
+
+        private void BtPgSqlClear_Click(object sender, RoutedEventArgs e)
+        {
+            ApDBContext pgContext = new PostGreSQLDBContext();
+            pgContext.Users.RemoveRange(pgContext.Users);
+            pgContext.SaveChanges();
+            dgPostgreSql.ItemsSource = pgContext.Users.ToList();
+        }
+
+        private void Btcompare_Click(object sender, RoutedEventArgs e)
+        {
+            ApDBContext sqlContext = new MSSQLDBContext();
+            ApDBContext pgContext = new PostGreSQLDBContext();
+
+
+
+
+
+
         }
 
         private void BtAddGender_Click(object sender, RoutedEventArgs e)
@@ -78,6 +125,8 @@ namespace MultiDBProject
             ApDBContext pgContext = new PostGreSQLDBContext();
             dgSql.ItemsSource = sqlContext.Users.ToList();
             dgPostgreSql.ItemsSource = pgContext.Users.ToList();
+
+
         }
 
         private User NewUserGenerator()
