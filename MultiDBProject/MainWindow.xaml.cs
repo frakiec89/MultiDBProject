@@ -3,17 +3,7 @@ using MultiDBProject.DB;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace MultiDBProject
 {
@@ -31,25 +21,15 @@ namespace MultiDBProject
             btAddGender.Click += BtAddGender_Click;
             btPgSqlClear.Click += BtPgSqlClear_Click;
             btSqlClear.Click += BtSqlClear_Click;
-
         }
 
         private void BtSqlClCompread_Click(object sender, RoutedEventArgs e)
         {
             ApDBContext sqlContext = new MSSQLDBContext();
-
-
-
-
             sqlContext.Users.Distinct();
             sqlContext.SaveChanges();
-
-         
             dgSql.ItemsSource = sqlContext.Users.ToList();
         }
-
-    
-
         private void BtSqlClear_Click(object sender, RoutedEventArgs e)
         {
             ApDBContext sqlContext = new MSSQLDBContext();
@@ -65,19 +45,11 @@ namespace MultiDBProject
             pgContext.SaveChanges();
             dgPostgreSql.ItemsSource = pgContext.Users.ToList();
         }
-
         private void Btcompare_Click(object sender, RoutedEventArgs e)
         {
             ApDBContext sqlContext = new MSSQLDBContext();
             ApDBContext pgContext = new PostGreSQLDBContext();
-
-
-
-
-
-
         }
-
         private void BtAddGender_Click(object sender, RoutedEventArgs e)
         {
             ApDBContext sqlContext = new MSSQLDBContext();
@@ -97,10 +69,6 @@ namespace MultiDBProject
             {
                 MessageBox.Show("Уже добавлены в бд");
             }
-
-
-
-
         }
 
         private void BtSql_Click(object sender, RoutedEventArgs e)
@@ -125,8 +93,6 @@ namespace MultiDBProject
             ApDBContext pgContext = new PostGreSQLDBContext();
             dgSql.ItemsSource = sqlContext.Users.ToList();
             dgPostgreSql.ItemsSource = pgContext.Users.ToList();
-
-
         }
 
         private User NewUserGenerator()
@@ -140,5 +106,27 @@ namespace MultiDBProject
             return generator.Generate();
         }
 
+        private void bttpUp_Click(object sender, RoutedEventArgs e)
+        {
+           try
+            {
+                Administrator.BackupDatabase();
+                MessageBox.Show("сохранении  прошло успешно");
+            }
+            catch( Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void FreshUp_Click(object sender, RoutedEventArgs e)
+        {
+            Window1 window = new Window1();
+            if ( window.ShowDialog()==true)
+            {
+                ApDBContext sqlContext = new MSSQLDBContext();
+                dgSql.ItemsSource = sqlContext.Users.ToList();
+            }
+        }
     }
 }

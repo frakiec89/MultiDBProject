@@ -39,6 +39,9 @@ namespace MultiDBProject.DB
             return Name;
         }
     }
+
+  
+
 }/*
 Add-Migration   - Context MSSQLDBContext -OutputDir Migrations\SqlServerMigrations
 Add-Migration   - Context PostGreSQLDBContext - OutputDir Migrations\PostGreSqlServerMigrations

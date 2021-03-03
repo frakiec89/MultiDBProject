@@ -32,7 +32,8 @@
                     >
             <Button x:Name="btSql" Content="Добавить в sql" Margin="5"/>
             <Button x:Name="btSqlClear" Content="Очистить" Margin="5"/>
-          
+            <Button x:Name="bttpUp" Click="bttpUp_Click" Content="Создать  бек апп" Margin="5"/>
+            <Button x:Name="FreshUp" Content="Востановить" Click="FreshUp_Click" ></Button>
         </StackPanel>
 
         <StackPanel  Grid.Row="0" Grid.Column="3"
@@ -42,6 +43,8 @@
                     Margin="2"
                     />
             <Button x:Name="btPgSqlClear" Content="Очистить" Margin="5"/>
+         
+
         </StackPanel>
 
         <Button Grid.Column="2" Grid.Row="1"
